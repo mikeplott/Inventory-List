@@ -11,15 +11,25 @@ public class InventoryList {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        System.out.println();
         System.out.println("Please enter your username");
         String username = scanner.nextLine();
+        if (username.equals("") || username.startsWith("/")) {
+            System.out.println("Invalid username, please try again.");
+            System.out.println();
+            main(args);
+        }
         System.out.println();
         if (users.get(username) == null) {
             System.out.println("User does not exist, would you like to create an account? Press y or n");
             String choice = scanner.nextLine();
+            if (choice.equalsIgnoreCase("n")) {
+                System.out.println();
+                System.out.println("Returning to user login");
+                System.out.println();
+                main(args);
+            }
             if (choice.equalsIgnoreCase("y")) {
-                //User user = new User;
                 System.out.println();
                 System.out.println("Please enter a password");
                 String pass = scanner.nextLine();
@@ -38,8 +48,8 @@ public class InventoryList {
             boolean keepRunning = true;
             System.out.println();
             System.out.println("Welcome " + username);
-            if (users.get(username).password != userPass) {
-                while (keepRunning) {
+                if (users.get(username).password != userPass) {
+                    while (keepRunning) {
                     User user = users.get(username);
                     System.out.println();
                     System.out.println("1: Create a new item");
@@ -47,7 +57,6 @@ public class InventoryList {
                     System.out.println("3: Update item quantity");
                     System.out.println("4: Display inventory");
                     System.out.println("5: Log out");
-
                     String userChoice = scanner.nextLine();
                     boolean makeSelection = true;
                     while (makeSelection) {
@@ -68,58 +77,59 @@ public class InventoryList {
                             for (int L = 0; L < user.items.size(); L ++) {
                                 System.out.println("[" + (L+1) + "]" + " " + user.items.get(L).itemName + " " + user.items.get(L).itemQuantity);
                             }
+                            System.out.println();
                             System.out.println("What item would you like to remove? Enter a number");
                             String itemIndex = scanner.nextLine();
                             System.out.println();
                             System.out.println("Are you sure you would like to remove the item? Press y or n");
                             String userChoice2 = scanner.nextLine();
-                            if (userChoice2.equalsIgnoreCase("y")) {
-                                user.items.remove(Integer.parseInt(itemIndex) - 1);
+                        if (userChoice2.equalsIgnoreCase("y")) {
+                            user.items.remove(Integer.parseInt(itemIndex) - 1);
+                            makeSelection = false;
+                        } else {
                                 makeSelection = false;
-                            } else {
-                                    makeSelection = false;
-                                }
+                            }
                         } else if (userChoice.equalsIgnoreCase("3")) {
-                                System.out.println();
-                                for (int j = 0; j < user.items.size(); j++) {
-                                    System.out.println("[" + (j+1) + "]" + " " + user.items.get(j).itemName + " " + user.items.get(j).itemQuantity);
-                                }
-                                System.out.println("What item would you like to update? Enter a number");
-                                String itemIndex2 = scanner.nextLine();
-                                Item currentItem = user.items.get(Integer.parseInt(itemIndex2) -1);
-                                System.out.println();
-                                System.out.println("What would you like the quantity to be?");
-                                String userItem3 = scanner.nextLine();
-                                //currentItem = user.items.get(Integer.parseInt(itemIndex2));
-                                currentItem.itemQuantity = Integer.parseInt(userItem3);
-                                //currentItem.itemQuantity = Integer.parseInt(userItem3);
-                                for (int k = 0; k < user.items.size(); k++)
-                                System.out.println("["+ (k+1) +"]" + " " + user.items.get(k).itemName + " " + user.items.get(k).itemQuantity);
-                                makeSelection = false;
+                            System.out.println();
+                            for (int j = 0; j < user.items.size(); j++) {
+                                System.out.println("[" + (j+1) + "]" + " " + user.items.get(j).itemName + " " + user.items.get(j).itemQuantity);
+                            }
+                            System.out.println("What item would you like to update? Enter a number");
+                            String itemIndex2 = scanner.nextLine();
+                            Item currentItem = user.items.get(Integer.parseInt(itemIndex2) -1);
+                            System.out.println();
+                            System.out.println("What would you like the quantity to be?");
+                            System.out.println();
+                            String userItem3 = scanner.nextLine();
+                            currentItem.itemQuantity = Integer.parseInt(userItem3);
+                            for (int k = 0; k < user.items.size(); k++)
+                            System.out.println("["+ (k+1) +"]" + " " + user.items.get(k).itemName + " " + user.items.get(k).itemQuantity);
+                            makeSelection = false;
                         } else if (userChoice.equalsIgnoreCase("4")) {
-                                System.out.println();
-                                for (int i = 0; i < user.items.size(); i++) {
-                                    System.out.println("["+ (i+1) +"]" + " " + user.items.get(i).itemName +" " + user.items.get(i).itemQuantity);
-                                    makeSelection = false;
-                                }
-                            }
-                            else if (userChoice.equalsIgnoreCase("5")) {
-                            main(args);
-                            }
-                            else if (userChoice.equalsIgnoreCase("/exit")) {
-                            System.exit(0);
-                        }
-                            else {
-                                System.out.println("Invalid entry");
+                            System.out.println();
+                            for (int i = 0; i < user.items.size(); i++) {
+                                System.out.println("["+ (i+1) +"]" + " " + user.items.get(i).itemName +" " + user.items.get(i).itemQuantity);
                                 makeSelection = false;
                             }
+                        }
+                        else if (userChoice.equalsIgnoreCase("5")) {
+                        main(args);
+                        }
+                        else if (userChoice.equalsIgnoreCase("/exit")) {
+                        System.exit(0);
+                        }
+                        else {
+                            System.out.println("Invalid entry");
+                            makeSelection = false;
                         }
                     }
                 }
-                } else{
-                    System.out.println("Invalid password returning you to user login");
-                    main(args);
-                }
+            }
+        }
+        else {
+            System.out.println("Invalid password returning you to user login");
+            main(args);
         }
     }
+}
 
