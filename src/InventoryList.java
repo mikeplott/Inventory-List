@@ -71,13 +71,10 @@ public class InventoryList {
                             System.out.println();
                             System.out.println("Please enter name of the item");
                             String userItem = scanner.nextLine();
+                            Item item = Item.createItem(userItem);
                             System.out.println();
-                            System.out.println("How many?");
-                            String userItemQuantity = scanner.nextLine();
-                            Item item = new Item(userItem, Integer.parseInt(userItemQuantity));
-                            item.itemName = userItem;
-                            item.itemQuantity = Integer.parseInt(userItemQuantity);
                             user.items.add(item);
+                            System.out.println(item);
                             makeSelection = false;
                         } else if (userChoice.equalsIgnoreCase("2")) {
                             System.out.println();
@@ -131,3 +128,20 @@ public class InventoryList {
 
 
 
+
+
+
+
+//                            if (Integer.parseInt(userItem3) > currentItem.itemQuantity) {
+//                                System.out.println(currentItem);
+//                                user.items.remove(currentItem);
+//                            }
+//Item.createItem(userItem);
+//System.out.println("How many?");
+//Item item = Item.createItem()
+//String userItemQuantity = scanner.nextLine();
+//                            System.out.println("What category?");
+//                            String userCategory = scanner.nextLine();
+//                            Item item = new Item(userItem, "",Integer.parseInt(userItemQuantity));
+//                            item.itemName = userItem;
+//                            item.itemQuantity = Integer.parseInt(userItemQuantity);
