@@ -91,14 +91,11 @@ public class InventoryList {
                             if (userChoice2.equalsIgnoreCase("y")) {
                                 user.items.remove(Integer.parseInt(itemIndex) - 1);
                                 makeSelection = false;
-                            } else {
-                                makeSelection = false;
                             }
                         } else if (userChoice.equalsIgnoreCase("3")) {
                             System.out.println();
                             user.displayList(user);
-                            {
-                            }
+                            System.out.println();
                             System.out.println("What item would you like to update? Enter a number");
                             String itemIndex2 = scanner.nextLine();
                             Item currentItem = user.items.get(Integer.parseInt(itemIndex2) - 1);
@@ -123,7 +120,8 @@ public class InventoryList {
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 System.out.println("Invalid password, returning you to user login");
                 main(args);
             }
