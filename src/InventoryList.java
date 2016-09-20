@@ -35,7 +35,7 @@ public class InventoryList {
             User user = new User();
             user.name = username;
             user.password = pass;
-            user.items = new ArrayList<Item>();
+            user.items = new ArrayList<>();
             users.put(username, user);
         }
         if (users.get(username) != null) {
