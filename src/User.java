@@ -11,7 +11,7 @@ public class User {
 
     void displayList(User user) {
         for(int i = 0; i < user.items.size(); i++) {
-            System.out.println("["+ (i+1) +"]" + " " + user.items.get(i).itemName +" " + user.items.get(i).itemQuantity);
+            System.out.println("["+ (i+1) +"]" + " " + user.items.get(i).itemName + " " + user.items.get(i).itemQuantity);
         }
     }
 }
