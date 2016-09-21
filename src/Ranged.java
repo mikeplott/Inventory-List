@@ -3,8 +3,6 @@
  */
 public class Ranged extends Item {
     public Ranged () {
-        this.itemName = itemName;
-        this.itemQuantity = itemQuantity;
         this.category = "Ranged";
     }
 }

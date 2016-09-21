@@ -3,8 +3,6 @@
  */
 public class Melee extends Item {
     public Melee() {
-        this.itemName = itemName;
-        this.itemQuantity = itemQuantity;
         this.category = "Melee";
     }
 }

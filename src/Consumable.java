@@ -3,8 +3,6 @@
  */
 public class Consumable extends Item {
     public Consumable() {
-        this.itemName = itemName;
-        this.itemQuantity = itemQuantity;
         this.category = "Consumable";
     }
 }
